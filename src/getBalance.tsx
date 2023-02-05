@@ -11,7 +11,7 @@ export default function GetBalance({address}: AddressProps) {
     address,
   })
   
-  let walletEthFBalance = ethBalance.data?.value.toString()
+  let walletEthFBalance = ethBalance.data?.value
   const balance = BigNumber.from(walletEthFBalance)
   const formatedBalance = utils.formatEther(balance)
   return (
