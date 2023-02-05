@@ -6,13 +6,13 @@ type AddressProps = {
   };
 
 export default function GetBalance({address}: AddressProps) {
-    // const { `0x${string}` } = address.params;
   const ethBalance = useBalance({
     address,
   })
   
-  let walletEthFBalance = ethBalance.data?.value.toString()
-  const balance = BigNumber.from(walletEthFBalance)
+  let walletEthBalance = ethBalance.data?.value
+//   const balance = BigNumber.from(walletEthBalance)
+const balance = walletEthBalance ? BigNumber.from(walletEthBalance) : BigNumber.from(0);
   const formatedBalance = utils.formatEther(balance)
   return (
     <>
