@@ -45,6 +45,7 @@ export default function Profile() {
         )}
       </h4>
       <button onClick={()=> alert("이건 되네")}>test btn</button>
+      <button onClick={() => window.location.reload()}>Click to reload!</button>
     </div>
   );
 }
