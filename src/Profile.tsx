@@ -44,6 +44,7 @@ export default function Profile() {
           "연결안됨"
         )}
       </h4>
+      <button onClick={()=> alert("이건 되네")}>test btn</button>
     </div>
   );
 }
