@@ -12,7 +12,7 @@ Buffer.from("anything", "base64");
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [goerli, polygonMumbai],
+  [polygonMumbai],
   [publicProvider()]
 );
 

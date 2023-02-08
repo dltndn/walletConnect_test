@@ -17,6 +17,7 @@ export default function SendEth() {
   let transactionUrl = `https://goerli.etherscan.io/tx/${data?.hash.toString()}` 
   return (
     <>
+    <h2>krw 전송</h2>
       <input
         type="text"
         value={recievedAddress}
@@ -29,7 +30,7 @@ export default function SendEth() {
         type="text"
         value={sendingAmmount}
         style={{ width: "10rem" }}
-        placeholder="전송할 이더 수량을 입력하세요"
+        placeholder="전송할 매틱 수량을 입력하세요"
         onChange={(event) => setSendingAmmount(event.target.value)}
       />
 

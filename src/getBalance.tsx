@@ -16,7 +16,7 @@ const balance = walletEthBalance ? BigNumber.from(walletEthBalance) : BigNumber.
   const formatedBalance = utils.formatEther(balance)
   return (
     <>
-        <div>현재 ETH 수량: {formatedBalance}</div>
+        <div>현재 MATIC 수량: {formatedBalance}</div>
     </>
   )
 }
