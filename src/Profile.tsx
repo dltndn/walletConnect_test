@@ -1,6 +1,8 @@
 import { useConnect, useAccount, useDisconnect } from "wagmi";
 import SendEth from "./sendEth";
 import GetBalance from "./getBalance";
+import { REACT_APP_QKRW_CONTRACT_ABI } from "./key"
+
 
 export default function Profile() {
   const { connect, connectors, error, isLoading, pendingConnector } =
@@ -8,6 +10,10 @@ export default function Profile() {
 
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
+
+
+  const Qkrw_abi = REACT_APP_QKRW_CONTRACT_ABI;
+  console.log(Qkrw_abi);
 
   return (
     <div>
@@ -38,13 +44,12 @@ export default function Profile() {
             <button onClick={() => disconnect()}>지갑연결해제</button>
             <p></p>
             <SendEth />
-            
           </div>
         ) : (
           "연결안됨"
         )}
       </h4>
-      <button onClick={()=> alert("이건 되네")}>test btn</button>
+      <button onClick={() => alert("이건 되네")}>test btn</button>
       <button onClick={() => window.location.reload()}>Click to reload!</button>
     </div>
   );
