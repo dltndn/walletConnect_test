@@ -516,3 +516,5 @@ export const REACT_APP_QKRW_CONTRACT_ABI = [
 ]
 
 export const QKRW_ADDRESS = "0xb3eeB9cA4f439812b7d6816637688418F52ba2Bd"
+
+export const ALCHEMY_API_KEY = "_86jypJDpkw3HQgYXr9I5NgFWPJnLBQf"

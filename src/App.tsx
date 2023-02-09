@@ -5,17 +5,17 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
 import { mainnet, polygonMumbai } from "wagmi/chains";
+
+import { ALCHEMY_API_KEY } from "./key";
 import Profile from "./Profile";
 
 import { Buffer } from "buffer";
 Buffer.from("anything", "base64");
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
-const alchemy_api_key = "_86jypJDpkw3HQgYXr9I5NgFWPJnLBQf"
-
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
-  [alchemyProvider({ apiKey: alchemy_api_key})]
+  [alchemyProvider({ apiKey: ALCHEMY_API_KEY})]
 );
 
 // Set up client
