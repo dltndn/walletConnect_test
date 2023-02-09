@@ -37,6 +37,7 @@ export default function SendToken({ address }: AddressProps) {
       args: [address.toString()],
     }, )
 
+    alert(data)
   return (
     <>
       <h2>krw 잔액</h2>
