@@ -17,7 +17,7 @@ export default function SendEth() {
   let transactionUrl = `https://goerli.etherscan.io/tx/${data?.hash.toString()}` 
   return (
     <>
-    <h2>krw 전송</h2>
+    <h2>Matic 전송</h2>
       <input
         type="text"
         value={recievedAddress}
