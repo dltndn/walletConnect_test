@@ -1,8 +1,7 @@
 import { useConnect, useAccount, useDisconnect } from "wagmi";
-import SendEth from "./sendEth";
-import GetBalance from "./getBalance";
-import SendToken from "./sendToken";
 import CheckNetwork from "./checkNetwork";
+import GetQkrwBalance from "./getQkrwBalance";
+import SendQkrw from "./sendQkrw";
 
 export default function Profile() {
   const { connect, connectors, error, isLoading, pendingConnector } =
@@ -36,19 +35,16 @@ export default function Profile() {
           <div>
             <div>연결됨</div>
             <h3>연결된 지갑주소: {address}</h3>
-            {isConnected && address && <GetBalance address={address} />}
             <CheckNetwork />
             <button onClick={() => disconnect()}>지갑연결해제</button>
             <p></p>
-            <SendEth />
-            {isConnected && address && <SendToken address={address}/>}
+            {isConnected && address && <GetQkrwBalance address={address}/>}
+            {isConnected && address && <SendQkrw address={address}/>}
           </div>
         ) : (
           "연결안됨"
         )}
       </h4>
-      <button onClick={() => alert("이건 되네")}>test btn</button>
-      <button onClick={() => window.location.reload()}>Click to reload!</button>
     </div>
   );
 }

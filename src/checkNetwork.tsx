@@ -4,8 +4,6 @@ export default function CheckNetwork() {
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
     useSwitchNetwork()
-
-    console.log(chains)
  
   return (
     <>

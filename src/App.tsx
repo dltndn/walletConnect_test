@@ -3,6 +3,7 @@ import { WagmiConfig, createClient, configureChains } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
 import { mainnet, polygonMumbai } from "wagmi/chains";
 
@@ -27,6 +28,9 @@ const client = createClient({
       options: {
         qrcode: true,
       },
+    }),
+    new MetaMaskConnector({
+      chains,
     }),
   ],
   provider,

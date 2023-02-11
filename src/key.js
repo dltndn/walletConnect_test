@@ -518,3 +518,65 @@ export const REACT_APP_QKRW_CONTRACT_ABI = [
 export const QKRW_ADDRESS = "0xb3eeB9cA4f439812b7d6816637688418F52ba2Bd"
 
 export const ALCHEMY_API_KEY = "_86jypJDpkw3HQgYXr9I5NgFWPJnLBQf"
+
+export const HELLO_WORLD_ABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "initMessage",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "newMessage",
+				"type": "string"
+			}
+		],
+		"name": "update",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "viewMessage",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+export const HELLO_WORLD_ADDRESS = "0x219dE7426c47a885b953fff7bF08F5E6578983Dd"
