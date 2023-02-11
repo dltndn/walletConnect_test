@@ -2,6 +2,7 @@ import { useContractWrite, usePrepareContractWrite } from "wagmi";
 import { useState, useEffect } from "react";
 import { REACT_APP_QKRW_CONTRACT_ABI, QKRW_ADDRESS } from "./key";
 import { utils } from "ethers";
+import GetTransactionUrl from "./getTransactionUrl";
 
 //Qkrw token contract information - polygon mumbai network
 const Qkrw_abi = REACT_APP_QKRW_CONTRACT_ABI;
@@ -11,26 +12,21 @@ type AddressProps = {
   address: `0x${string}`;
 };
 
-const getTxUrl = (hash:string) => {
-    return `https://mumbai.polygonscan.com/tx/${hash}`
-}
-
-
 export default function SendQkrw({ address }: AddressProps) {
   const [recievedAddress, setRecievedAddress] = useState("");
   const [sendingAmmount, setSendingAmmount] = useState("");
   const [transactionUrl, setTransactionUrl] = useState("");
   const [beforeFormatedAmm, setBeforeFormatedAmm] = useState("");
+  const [hash, setHash] = useState<`0x${string}`>("0x123")
 
-  const formatTokenAmm = (amm:string) => {
-    if (amm != "") {
-        let result
-    result = utils.parseUnits(amm, 18)
-    console.log(BigInt(result._hex))
-    setSendingAmmount(BigInt(result._hex).toString())  
+  const formatTokenAmm = (amm: string) => {
+    if (amm !== "") {
+      let result;
+      result = utils.parseUnits(amm, 18);
+      setSendingAmmount(BigInt(result._hex).toString());
     }
-     console.log("비어있는 amm")
-}
+    console.log("비어있는 amm");
+  };
 
   const { config } = usePrepareContractWrite({
     address: Qkrw_address,
@@ -43,25 +39,25 @@ export default function SendQkrw({ address }: AddressProps) {
   const { data, isLoading, isSuccess, write } = useContractWrite({
     ...config,
     onSuccess(data) {
-        setTransactionUrl(getTxUrl(data.hash))
-      },
-      onError(error) {
-        console.log(error)
-      },
+    //   setTransactionUrl(getTxUrl(data.hash));
+    setHash(data.hash)
+    },
+    onError(error) {
+      console.log(error);
+    },
   });
 
   useEffect(() => {
     if (isSuccess) {
       setRecievedAddress("");
       setSendingAmmount("");
-      setBeforeFormatedAmm("")
+      setBeforeFormatedAmm("");
     }
   }, [isSuccess]);
 
   useEffect(() => {
-    formatTokenAmm(beforeFormatedAmm)
-  }, [beforeFormatedAmm])
-
+    formatTokenAmm(beforeFormatedAmm);
+  }, [beforeFormatedAmm]);
   return (
     <>
       <h2>krw 전송</h2>
@@ -88,7 +84,7 @@ export default function SendQkrw({ address }: AddressProps) {
         <div>
           Transaction: {JSON.stringify(data)}
           <p></p>
-          <a href={transactionUrl} target="_blank" rel="noreferrer">확인하러가기</a>
+          <GetTransactionUrl hashData={hash} />
         </div>
       )}
     </>
