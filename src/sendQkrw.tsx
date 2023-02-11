@@ -15,7 +15,6 @@ type AddressProps = {
 export default function SendQkrw({ address }: AddressProps) {
   const [recievedAddress, setRecievedAddress] = useState("");
   const [sendingAmmount, setSendingAmmount] = useState("");
-  const [transactionUrl, setTransactionUrl] = useState("");
   const [beforeFormatedAmm, setBeforeFormatedAmm] = useState("");
   const [hash, setHash] = useState<`0x${string}`>("0x123")
 
@@ -39,7 +38,6 @@ export default function SendQkrw({ address }: AddressProps) {
   const { data, isLoading, isSuccess, write } = useContractWrite({
     ...config,
     onSuccess(data) {
-    //   setTransactionUrl(getTxUrl(data.hash));
     setHash(data.hash)
     },
     onError(error) {

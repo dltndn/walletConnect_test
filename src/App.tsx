@@ -5,7 +5,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
-import { mainnet, polygonMumbai } from "wagmi/chains";
+import { polygonMumbai } from "wagmi/chains";
 
 import { ALCHEMY_API_KEY } from "./key";
 import Profile from "./Profile";
