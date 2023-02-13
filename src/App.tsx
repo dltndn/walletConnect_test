@@ -1,47 +1,49 @@
 import { WagmiConfig, createClient, configureChains } from "wagmi";
-
-import { alchemyProvider } from "wagmi/providers/alchemy";
-
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-
 import { polygonMumbai } from "wagmi/chains";
-
-import { ALCHEMY_API_KEY } from "./key";
 import Profile from "./Profile";
+import {
+  EthereumClient,
+  modalConnectors,
+  walletConnectProvider,
+} from "@web3modal/ethereum";
+import { Web3Modal } from "@web3modal/react";
+import { projectId } from "./key"
 
 import { Buffer } from "buffer";
 Buffer.from("anything", "base64");
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
-const { chains, provider, webSocketProvider } = configureChains(
-  [polygonMumbai],
-  [alchemyProvider({ apiKey: ALCHEMY_API_KEY})]
-);
+const chains = [polygonMumbai]
 
-// Set up client
-const client = createClient({
+const { provider } = configureChains(chains, [
+  walletConnectProvider({ projectId }),
+]);
+
+const wagmiClient = createClient({
   autoConnect: true,
-  connectors: [
-    new WalletConnectConnector({
-      chains,
-      options: {
-        qrcode: true,
-      },
-    }),
-    new MetaMaskConnector({
-      chains,
-    }),
-  ],
+  connectors: modalConnectors({
+    projectId,
+    version: "1", // or "2"
+    appName: "web3Modal",
+    chains,
+  }),
   provider,
-  webSocketProvider,
 });
+
+const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 // Pass client to React Context Provider
 export default function App() {
   return (
-    <WagmiConfig client={client}>
+    <>
+    <WagmiConfig client={wagmiClient}>
       <Profile />
     </WagmiConfig>
+    
+    <Web3Modal
+        projectId={projectId}
+        ethereumClient={ethereumClient}
+      />
+    </>
   );
 }

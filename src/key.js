@@ -580,3 +580,5 @@ export const HELLO_WORLD_ABI = [
 ]
 
 export const HELLO_WORLD_ADDRESS = "0x219dE7426c47a885b953fff7bF08F5E6578983Dd"
+
+export const projectId = "08edc54e7a399654f0647ee05f965603"

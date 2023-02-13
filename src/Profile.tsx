@@ -3,6 +3,8 @@ import CheckNetwork from "./checkNetwork";
 import GetQkrwBalance from "./getQkrwBalance";
 import SendQkrw from "./sendQkrw";
 
+import { Web3Button } from "@web3modal/react";
+
 export default function Profile() {
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
@@ -12,21 +14,7 @@ export default function Profile() {
 
   return (
     <div>
-      {connectors.map((connector) => (
-        <button
-          disabled={isConnected}
-          key={connector.id}
-          onClick={() => {
-            connect({ connector });
-          }}
-        >
-          {connector.name}
-          {!connector.ready && " (unsupported)"}
-          {isLoading &&
-            connector.id === pendingConnector?.id &&
-            " (connecting)"}
-        </button>
-      ))}
+      <Web3Button />
 
       {error && <div>{error.message}</div>}
       <h4>
