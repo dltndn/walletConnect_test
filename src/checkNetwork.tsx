@@ -1,10 +1,12 @@
 import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { useEffect } from 'react'
  
 export default function CheckNetwork() {
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
     useSwitchNetwork()
- 
+
+    console.log(chain)
   return (
     <>
       {chain && <div>Connected to {chain.name}</div>}

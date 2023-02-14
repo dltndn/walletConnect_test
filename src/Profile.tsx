@@ -1,5 +1,4 @@
 import { useConnect, useAccount } from "wagmi";
-import CheckNetwork from "./checkNetwork";
 import GetQkrwBalance from "./getQkrwBalance";
 import SendQkrw from "./sendQkrw";
 import { Web3Button } from "@web3modal/react";
@@ -21,7 +20,6 @@ export default function Profile() {
           <div>
             <div>연결됨</div>
             <h3>연결된 지갑주소: {address}</h3>
-            <CheckNetwork />
             <p></p>
             {isConnected && address && <GetQkrwBalance address={address}/>}
             {isConnected && address && <SendQkrw address={address}/>}
