@@ -44,8 +44,6 @@ export default function SendToken({ address }: AddressProps) {
       <h2>krw 잔액</h2>
     <p></p>
     <div>현재 KRW 잔액: {krwBalance}</div>
-    {/* <div>is Error: {isError}</div>
-    <div>is Loading: {isLoading}</div> */}
       <h2>krw 전송</h2>
       <input
         type="text"
@@ -62,23 +60,6 @@ export default function SendToken({ address }: AddressProps) {
         placeholder="전송할 QKRW 수량을 입력하세요"
         onChange={(event) => setSendingAmmount(event.target.value)}
       />
-
-      {/* <button
-        disabled={!write}
-        onClick={() => write?.()}
-      >
-        전송
-      </button>
-      {isLoading && <div>Check Wallet</div>}
-      {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>} */}
     </>
   );
 }
-
-// const { config } = usePrepareContractWrite({
-  //   address: HELLO_WORLD_ADDRESS,
-  //   abi: HELLO_WORLD_ABI,
-  //   functionName: 'update',
-  //   args:["success2"]
-  // })
-  // const { data, isLoading, isSuccess, write } = useContractWrite(config)

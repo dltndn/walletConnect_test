@@ -1,4 +1,4 @@
-import { useConnect, useAccount, useDisconnect } from "wagmi";
+import { useConnect, useAccount } from "wagmi";
 import CheckNetwork from "./checkNetwork";
 import GetQkrwBalance from "./getQkrwBalance";
 import SendQkrw from "./sendQkrw";
@@ -9,7 +9,6 @@ export default function Profile() {
     useConnect();
 
   const { address, isConnected } = useAccount();
-  const { disconnect } = useDisconnect();
 
   return (
     <div>
@@ -23,7 +22,6 @@ export default function Profile() {
             <div>연결됨</div>
             <h3>연결된 지갑주소: {address}</h3>
             <CheckNetwork />
-            <button onClick={() => disconnect()}>지갑연결해제</button>
             <p></p>
             {isConnected && address && <GetQkrwBalance address={address}/>}
             {isConnected && address && <SendQkrw address={address}/>}

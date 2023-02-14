@@ -5,8 +5,8 @@ import { utils } from "ethers";
 import GetTransactionUrl from "./getTransactionUrl";
 
 //Qkrw token contract information - polygon mumbai network
-const Qkrw_abi = REACT_APP_QKRW_CONTRACT_ABI;
-const Qkrw_address = QKRW_ADDRESS;
+const Qkrw_abi = REACT_APP_QKRW_CONTRACT_ABI
+const Qkrw_address = QKRW_ADDRESS
 
 type AddressProps = {
   address: `0x${string}`;
