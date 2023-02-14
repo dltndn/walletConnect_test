@@ -6,7 +6,7 @@ import {
   modalConnectors,
   walletConnectProvider,
 } from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
+import { Web3Modal, useWeb3ModalTheme } from "@web3modal/react";
 import { projectId } from "./key"
 
 import { Buffer } from "buffer";
@@ -23,7 +23,7 @@ const wagmiClient = createClient({
   autoConnect: true,
   connectors: modalConnectors({
     projectId,
-    version: "2", // or "2"
+    version: "1", // or "2"
     appName: "web3Modal",
     chains,
   }),
