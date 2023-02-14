@@ -34,6 +34,14 @@ const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 // Pass client to React Context Provider
 export default function App() {
+  const { theme, setTheme } = useWeb3ModalTheme();
+  setTheme({
+    themeMode: "dark",
+    themeColor: "default",
+    themeBackground: "gradient",
+  });
+  
+  
   return (
     <>
     <WagmiConfig client={wagmiClient}>
@@ -43,6 +51,7 @@ export default function App() {
     <Web3Modal
         projectId={projectId}
         ethereumClient={ethereumClient}
+        themeBackground={theme.themeBackground}
       />
     </>
   );

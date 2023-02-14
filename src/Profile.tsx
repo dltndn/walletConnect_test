@@ -2,7 +2,6 @@ import { useConnect, useAccount, useDisconnect } from "wagmi";
 import CheckNetwork from "./checkNetwork";
 import GetQkrwBalance from "./getQkrwBalance";
 import SendQkrw from "./sendQkrw";
-
 import { Web3Button } from "@web3modal/react";
 
 export default function Profile() {
@@ -14,7 +13,7 @@ export default function Profile() {
 
   return (
     <div>
-      <Web3Button />
+      <Web3Button icon="hide" label="지갑연결" balance="hide"/>
 
       {error && <div>{error.message}</div>}
       <h4>
